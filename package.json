@@ -1,0 +1,29 @@
+{
+  "name": "chart",
+  "version": "1.0.0",
+  "description": "Plugin de gráfico que utiliza a biblioteca de gráfico do Google: googlecharts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renanaragao/chart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renanaragao/chart/issues"
+  },
+  "homepage": "https://github.com/renanaragao/chart",
+  "engines": {
+        "node": ">= 0.10.0"
+    },
+  "devDependencies": {
+        "karma": "~0.12.0",
+        "karma-cli": "*",
+        "karma-jasmine": "~0.1.0",
+        "karma-phantomjs-launcher": "*",
+        "karma-chrome-launcher": "*"
+    }
+}
