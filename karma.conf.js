@@ -18,6 +18,7 @@ module.exports = function(config) {
       'node_modules/jquery/dist/jquery.min.js',
       'app/app.js',
       'app/base/chartBase.js',
+      'app/enumChart.js',
       'test/*.js'
     ],
 
