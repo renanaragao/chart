@@ -2,7 +2,7 @@
 	
 	c.enumChart = Object.freeze({
 		column: 1,
-		map: 2
+		geo: 2
 	});
 	
 })(window.chart);

@@ -1,4 +1,3 @@
-/* global chart */
 (function(c) {
 	
 	c.factory = c.factory || {};
@@ -21,4 +20,4 @@
 	
 	};
 	
-})(chart);
+})(window.chart);
