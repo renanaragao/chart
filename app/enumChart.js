@@ -1,7 +1,7 @@
 (function (c) {
 	
 	c.enumChart = Object.freeze({
-		bar: 1,
+		column: 1,
 		map: 2
 	});
 	

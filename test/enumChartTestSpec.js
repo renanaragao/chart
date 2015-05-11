@@ -7,7 +7,7 @@ describe('EnumChart - ', function () {
 	it("The properties value can't be changed", function () {
 		
 		expect(function () {
-			chart.enumChart.barra = 5;
+			chart.enumChart.column = 5;
 		}).toThrow();
 				
 	});
