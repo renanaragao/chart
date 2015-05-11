@@ -11,8 +11,6 @@
 		
 		c.charts.ChartBase.call(self, options, element);
 		
-		self._draw = _draw;
-		
 		var settings = {
             source: '',
             data: null,
@@ -35,7 +33,9 @@
             mouseOver: function (pchart) { }
         };
 		
-		function _draw(pElement, datatable, pOptions){
+		self._draw = draw;
+		
+		function draw(pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			

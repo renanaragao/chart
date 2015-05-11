@@ -7,21 +7,10 @@ describe('ChartFactory - ', function () {
 
 	beforeEach(function () {
 		
-		chart.charts = {
-			Column: function(options, el){
-				return {
-					returned: 'column'
-				};
-			},
-			Pie: function (options, el) {
-				return {
-					returned: 'pie'
-				};
-			}
-		};	
+		window.google = {};
+		
 	});
 	
-
 	it('chartFactory must have a method to create a new chart', function () {
 		
 		expect(chart.factory.chartFactory).toBeDefined();
@@ -31,19 +20,17 @@ describe('ChartFactory - ', function () {
 	
 	it('chartFactory must create a new chart based on passed parameter (parameter 0 (column))', function () {
 		
-		var chartCreated = chart.factory.chartFactory().createNew(0, {}, {});
+		var chartCreated = chart.factory.chartFactory().createNew(0, {data: []}, {});
 		
 		expect(chartCreated).toBeDefined();
-		expect(chartCreated.returned).toEqual('column');
 		
 	});
 	
 	it('chartFactory must create a new chart based on passed parameter (parameter 1 (column))', function () {
 		
-		var chartCreated = chart.factory.chartFactory().createNew(1, {}, {});
+		var chartCreated = chart.factory.chartFactory().createNew(1, {data: []}, {});
 		
 		expect(chartCreated).toBeDefined();
-		expect(chartCreated.returned).toEqual('pie');
 		
 	});
 

@@ -6,7 +6,7 @@
 		
 		var Charts = [
 			c.charts.Column,
-			c.charts.Pie
+			c.charts.Geo
 		];
 	
 	
