@@ -15,11 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      
+      'node_modules/jquery/dist/jquery.min.js',
       'app/app.js',
       'app/factory/chartFactory.js',
-      'test/*js'
-      
+      'app/base/chartBase.js',
+      'app/enumChart.js',
+      'app/chart/*.js',
+      'test/*.js'
     ],
 
 
