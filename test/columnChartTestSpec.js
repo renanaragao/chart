@@ -1,24 +1,15 @@
 /// <reference path="../typings/jasmine/jasmine.d.ts"/>
 
 describe('Column Chart - ', function () {
-
-
-	beforeEach(function() {
 	
-		window.chart = {
-			charts: {
-				ChartBase: function() {
-					
-				}
-			}
-		};		
-				
+	beforeEach(function () {
+		window.google = {};
 	});
 	
 	
 	it('Must create a Column Chart', function () {	
-						console.log(window.chart);
-		var columnChart = new chart.charts.Column({ options: 'options' }, { element: 'div' });
+		
+		var columnChart = new chart.charts.Column({ data:[], options: 'options' }, { element: 'div' });
 			
 		var element, chartOptions, chartSource;	
 			

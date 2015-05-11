@@ -7,16 +7,16 @@ describe('EnumChart - ', function () {
 	it("The properties value can't be changed", function () {
 		
 		expect(function () {
-			chart.enumChart.column = 5;
+			window.chart.enumChart.column = 5;
 		}).toThrow();
 				
 	});
 	
 	
-	it("Can't be possible to create new properties", function () {
+	it("Can't be possible create new properties", function () {
 		
 		expect(function () {
-			chart.enumChart.pie = 10;
+			window.chart.enumChart.pie = 10;
 		}).toThrow();
 		
 	});

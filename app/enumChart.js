@@ -5,4 +5,4 @@
 		map: 2
 	});
 	
-})(chart);
+})(window.chart);
