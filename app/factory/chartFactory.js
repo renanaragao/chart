@@ -4,14 +4,20 @@
 	
 	c.factory.chartFactory = function () {
 		
+		var Charts = [
+			c.charts.Column,
+			c.charts.Pie
+		];
+	
+	
 		return {
-			create: create
+			createNew: createNew
 		};
-		
-		function create() {
-			
-		}
-		
+				
+		function createNew(typeChart, options, el) {
+			return new Charts[typeChart](options, el);
+		};
+	
 	};
 	
 })(chart);
