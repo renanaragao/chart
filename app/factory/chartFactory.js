@@ -4,11 +4,9 @@
 	
 	c.factory.chartFactory = function () {
 		
-		var Charts = [
-			c.charts.Column,
-			c.charts.Geo
-		];
-	
+		var Charts = {};
+		Charts[c.enumChart.geo] = c.charts.Geo;
+		Charts[c.enumChart.column] = c.charts.Column;
 	
 		return {
 			createNew: createNew

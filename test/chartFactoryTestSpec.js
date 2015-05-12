@@ -22,7 +22,8 @@ describe('ChartFactory - ', function () {
 						addListener: function (chart, event, select) {
 						}
 					}
-			}
+			},
+			load: function (p1, p2, p3) { }
 		};
 		
 	});
@@ -34,17 +35,17 @@ describe('ChartFactory - ', function () {
 	});
 	
 	
-	it('chartFactory must create a new chart based on passed parameter (parameter 0 (column))', function () {
+	it('chartFactory must create a new chart based on passed parameter (parameter chart.enumChat.column)', function () {
 		
-		var chartCreated = chart.factory.chartFactory().createNew(0, {data: []}, {});
+		var chartCreated = chart.factory.chartFactory().createNew(chart.enumChart.column, {data: []}, {});
 		
 		expect(chartCreated).toBeDefined();
 		
 	});
 	
-	it('chartFactory must create a new chart based on passed parameter (parameter 1 (column))', function () {
+	it('chartFactory must create a new chart based on passed parameter (parameter chart.enumChat.geo)', function () {
 		
-		var chartCreated = chart.factory.chartFactory().createNew(1, {data: []}, {});
+		var chartCreated = chart.factory.chartFactory().createNew(chart.enumChart.geo, {data: []}, {});
 		
 		expect(chartCreated).toBeDefined();
 		

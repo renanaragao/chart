@@ -3,6 +3,12 @@
 
 describe('EnumChart - ', function () {
 	
+	beforeEach(function () {
+		
+		window.google.load = function (p1, p2, p3) { };
+		
+	});
+	
 	it("The properties value can't be changed", function () {
 		
 		try {

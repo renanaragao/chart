@@ -31,7 +31,10 @@ describe('ChartBase - ', function () {
 						addListener: function (chart, event, select) {
 						}
 					}
-		}
+		},
+		load: function (p1, p2, p3) {
+				
+			}
 	};
 	
 	beforeEach(function () {
@@ -53,18 +56,6 @@ describe('ChartBase - ', function () {
 		new chart.charts.ChartBase({source: 'url'});
 		
 		new chart.charts.ChartBase({data: 'url'});
-		
-	});
-	
-	it("Must validate google's library", function () {
-		
-		delete window.google;
-		
-		expect(function () {
-			
-			new chart.charts.ChartBase({data: []});
-			
-		}).toThrow(new Error("google chart not found."));
 		
 	});
 	
@@ -165,7 +156,8 @@ describe('ChartBase - ', function () {
 						addListener: function (chart, event, select) {
 						}
 					}
-			}
+			},
+			load: function (p1, p2, p3) { }
 		};
 		
 		var ChartFake = function (options, el) {
@@ -199,7 +191,7 @@ describe('ChartBase - ', function () {
 	
 	it('Must capture the event click of mouse', function () {
 		
-		var eventEspected = {};
+		var eventExpected = {};
 		
 		var selectedChart = false;
 		
@@ -212,12 +204,13 @@ describe('ChartBase - ', function () {
 						},
 					events: {
 						addListener: function (chart, event, select) {
-							eventEspected.chart = chart;
-							eventEspected.event = event;
-							eventEspected.select = select;
+							eventExpected.chart = chart;
+							eventExpected.event = event;
+							eventExpected.select = select;
 						}
 					}
-				}
+				},
+			load: function (p1, p2, p3) { }
 		};
 		
 		var ChartFake = function (options, el) {
@@ -245,10 +238,10 @@ describe('ChartBase - ', function () {
 		
 		callbackExpected();
 		
-		expect(eventEspected.chart).toEqual('chart');
-		expect(eventEspected.event).toEqual('select');
+		expect(eventExpected.chart).toEqual('chart');
+		expect(eventExpected.event).toEqual('select');
 		
-		eventEspected.select();
+		eventExpected.select();
 		expect(selectedChart).toEqual(true);
 		
 	});

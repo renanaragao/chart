@@ -27,7 +27,7 @@
         init();
         
         function init() {
-            
+            		
             validate();
             window.google.setOnLoadCallback(drawChart);
             
@@ -156,8 +156,6 @@
         function validate() {
             
             if(!settings.source && !settings.data) throw new Error("Data source not found.");
-            
-            if(!window.google) throw new Error("google chart not found.");
             
         }
         
