@@ -10,7 +10,7 @@ describe('Geo Chart - ', function () {
 				},
 			visualization: {
 				
-				ColumnChart: function (el) {
+				GeoChart: function (el) {
 										
 					element = el;	
 									
@@ -35,12 +35,13 @@ describe('Geo Chart - ', function () {
 		
 		var geoChart = new window.chart.charts.Geo({ data:[], options: 'options' }, { element: 'div' });
 		
-		var returnChart = geoChart._draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
+		var returnChart = geoChart.draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});
 		expect(chartSource).toEqual({source: 'source'});
 		expect(chartOptions).toEqual({options: 'options'}); 
+		expect(chart.charts.Geo.prototype instanceof chart.charts.ChartBase).toEqual(true);
 		
 	});
 	

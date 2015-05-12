@@ -35,12 +35,13 @@ describe('Column Chart - ', function () {
 		
 		var columnChart = new chart.charts.Column({ data:[], options: 'options' }, { element: 'div' });
 			
-		var returnChart = columnChart._draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
+		var returnChart = columnChart.draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});
 		expect(chartSource).toEqual({source: 'source'});
 		expect(chartOptions).toEqual({options: 'options'}); 
+		expect(chart.charts.Column.prototype instanceof chart.charts.ChartBase).toEqual(true);
 		
 	});
 	

@@ -22,8 +22,6 @@
         
         $.extend(true, settings, options);
         
-        self._draw = draw;
-        
         init();
         
         function init() {
@@ -41,7 +39,7 @@
             
             if(settings.responsive) settings.options.width = data.getNumberOfColumns() * 65;
             
-            var chart = self._draw(el, data, settings.options);
+            var chart = self.draw(el, data, settings.options);
             
             window.google.visualization.events.addListener(chart, 'select', settings.select);
             
@@ -76,11 +74,11 @@
             for (var i = 0; i < count; i++) {
 
                 found = groups.filter(function (item) {
-                    return item === data[i]["Grupo"];
+                    return item === data[i]["Descricao"];
                 });
 
                 if (found.length === 0) {
-                    groups.push(settings.data[i]["Grupo"]);
+                    groups.push(settings.data[i]["Descricao"]);
                 }
             }
 
@@ -101,11 +99,11 @@
             for (var i = 0; i < count; i++) {
 
                 found = groups.filter(function (item) {
-                    return item === settings.data[i]["Descricao"];
+                    return item === settings.data[i]["Grupo"];
                 });
 
                 if (found.length === 0) {
-                    groups.push(settings.data[i]["Descricao"]);
+                    groups.push(settings.data[i]["Grupo"]);
                 }
             }
 
@@ -136,7 +134,7 @@
             
             var found = data.filter(function (item) {
 
-                return item["Descricao"] === row && item["Grupo"] === column;
+                return item["Grupo"] === row && item["Descricao"] === column;
 
             });
 
@@ -156,10 +154,6 @@
         function validate() {
             
             if(!settings.source && !settings.data) throw new Error("Data source not found.");
-            
-        }
-        
-        function draw() {
             
         }
         

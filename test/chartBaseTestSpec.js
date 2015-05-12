@@ -40,7 +40,9 @@ describe('ChartBase - ', function () {
 	beforeEach(function () {
 		
 		window.google = {};
-		
+		chart.charts.ChartBase.prototype.draw = function () {
+			
+		}		
 	});
 	
 	it('Must validate the data source of the ChartBase.', function () { 
@@ -76,10 +78,12 @@ describe('ChartBase - ', function () {
 		new chart.charts.ChartBase({data: data});
 		
 		var dataTableExpected = [
-			['Grupo', 'sp', 'rj', 'sc', 'bh'],
-			['a', {v: 10, f: '10.00'}, {v: 0, f: '0'}, {v: 8, f: '8.00'}, {v: 0, f: '0'}],
-			['b', {v: 5, f: '5.00'}, {v: 4, f: '4.00'}, {v: 0, f: '0'}, {v: 20, f: '20.00'}],
-			['c', {v: 2, f: '2.00'}, {v: 6, f: '6.00'}, {v: 10, f: '10.00'}, {v: 20, f: '20.00'}],
+			['Grupo', 'a', 'b', 'c'],
+			['sp', {v: 10, f: '10.00'}, {v: 5, f: '5.00'}, {v: 2, f: '2.00'}],
+			['rj', {v: 0, f: '0'}, {v: 4, f: '4.00'}, {v: 6, f: '6.00'}],
+			['sc', {v: 8, f: '8.00'}, {v: 0, f: '0'}, {v: 10, f: '10.00'}],
+			['bh', {v: 0, f: '0'}, {v: 20, f: '20.00'}, {v: 20, f: '20.00'}],
+			
 		];
 		
 		callbackExpected();
@@ -102,7 +106,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self._draw = draw;
+			self.draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				elementExpected = pElement;
@@ -116,10 +120,11 @@ describe('ChartBase - ', function () {
 		var options = {data: data, options: {width: 15}},
 			el = {node: 'div'},
 		    dataTable = [
-			['Grupo', 'sp', 'rj', 'sc', 'bh'],
-			['a', {v: 10, f: '10.00'}, {v: 0, f: '0'}, {v: 8, f: '8.00'}, {v: 0, f: '0'}],
-			['b', {v: 5, f: '5.00'}, {v: 4, f: '4.00'}, {v: 0, f: '0'}, {v: 20, f: '20.00'}],
-			['c', {v: 2, f: '2.00'}, {v: 6, f: '6.00'}, {v: 10, f: '10.00'}, {v: 20, f: '20.00'}],
+			['Grupo', 'a', 'b', 'c'],
+			['sp', {v: 10, f: '10.00'}, {v: 5, f: '5.00'}, {v: 2, f: '2.00'}],
+			['rj', {v: 0, f: '0'}, {v: 4, f: '4.00'}, {v: 6, f: '6.00'}],
+			['sc', {v: 8, f: '8.00'}, {v: 0, f: '0'}, {v: 10, f: '10.00'}],
+			['bh', {v: 0, f: '0'}, {v: 20, f: '20.00'}, {v: 20, f: '20.00'}],
 		];;
 		
 		new ChartFake(options, el);
@@ -166,7 +171,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self._draw = draw;
+			self.draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				optionsExpected = pOptions;
@@ -219,7 +224,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self._draw = draw;
+			self.draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				return 'chart';
