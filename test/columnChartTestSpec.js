@@ -2,19 +2,12 @@
 
 describe('Column Chart - ', function () {
 	
+	var element, chartOptions, chartSource;	
+	
 	beforeEach(function () {
-		window.google = {};
-	});
-	
-	
-	it('Must create a Column Chart', function () {	
-		
-		var columnChart = new chart.charts.Column({ data:[], options: 'options' }, { element: 'div' });
-			
-		var element, chartOptions, chartSource;	
-			
 		window.google = {		
-			
+			setOnLoadCallback: function (callback) {
+				},
 			visualization: {
 				
 				ColumnChart: function (el) {
@@ -34,7 +27,13 @@ describe('Column Chart - ', function () {
 				}
 			}			
 		};	
+	});
+	
+	
+	it('Must create a Column Chart', function () {	
 		
+		var columnChart = new chart.charts.Column({ data:[], options: 'options' }, { element: 'div' });
+			
 		var returnChart = columnChart._draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
 		
 		expect(returnChart).toBeDefined();

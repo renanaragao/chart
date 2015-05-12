@@ -36,7 +36,7 @@
 			
 			$.extend(true, settings, pOptions);
 			
-			var chart = new google.visualization.ColumnChart(pElement);
+			var chart = new window.google.visualization.ColumnChart(pElement);
             chart.draw(datatable, pOptions);
 			
 			return chart;

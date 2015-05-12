@@ -17,11 +17,7 @@ module.exports = function(config) {
     files: [
       'node_modules/jquery/dist/jquery.min.js',      
       'app/app.js',
-<<<<<<< HEAD
-      'app/factory/chartFactory.js',
-=======
       'app/factory/*.js',
->>>>>>> 1ee32c1f0e2cb785cb4aebb3d5ad7028acff8e74
       'app/base/chartBase.js',
       'app/enumChart.js',
       'app/chart/*.js',

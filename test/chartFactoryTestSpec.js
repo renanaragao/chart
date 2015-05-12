@@ -7,7 +7,23 @@ describe('ChartFactory - ', function () {
 
 	beforeEach(function () {
 		
-		window.google = {};
+		window.google = {
+				setOnLoadCallback: function (callback) {
+				},
+				visualization: {
+				arrayToDataTable: function (data) {
+					
+					return {
+						getNumberOfColumns: function () {
+						}
+					};
+				},
+				events: {
+						addListener: function (chart, event, select) {
+						}
+					}
+			}
+		};
 		
 	});
 	

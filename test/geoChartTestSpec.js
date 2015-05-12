@@ -2,19 +2,12 @@
 
 describe('Geo Chart - ', function () {
 	
+	var element, chartOptions, chartSource;	
+	
 	beforeEach(function () {
-		window.google = {};
-	});
-	
-	
-	it('Must create a Geo Chart', function () {	
-		
-		var geoChart = new window.chart.charts.Geo({ data:[], options: 'options' }, { element: 'div' });
-			
-		var element, chartOptions, chartSource;	
-			
 		window.google = {		
-			
+			setOnLoadCallback: function (callback) {
+				},
 			visualization: {
 				
 				ColumnChart: function (el) {
@@ -34,6 +27,12 @@ describe('Geo Chart - ', function () {
 				}
 			}			
 		};	
+	});
+	
+	
+	it('Must create a Geo Chart', function () {	
+		
+		var geoChart = new window.chart.charts.Geo({ data:[], options: 'options' }, { element: 'div' });
 		
 		var returnChart = geoChart._draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
 		
