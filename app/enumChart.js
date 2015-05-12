@@ -1,8 +1,8 @@
 (function (c) {
 	
 	c.enumChart = Object.freeze({
-		bar: 1,
-		map: 2
+		column: 1,
+		geo: 2
 	});
 	
-})(chart);
+})(window.chart);

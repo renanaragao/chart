@@ -1,6 +1,5 @@
 /// <reference path="../../typings/jquery/jquery.d.ts"/>
 (function (c) {
-	'use strict';
     
 	c.charts = c.charts || {};
 	
