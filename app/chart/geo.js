@@ -8,6 +8,17 @@
 	c.charts.Geo = function(options, element){
 			
 		var self = this;
+				
+		self.draw = function (pElement, datatable, pOptions){
+			
+			$.extend(true, settings, pOptions);
+			
+			var chart = new google.visualization.GeoChart(pElement);
+            chart.draw(datatable, pOptions);
+			
+			return chart;
+			
+		};
 		
 		c.charts.ChartBase.call(self, options, element);
 		
@@ -33,21 +44,8 @@
             mouseOver: function (pchart) { }
         };
 		
-		self._draw = draw;
-		
-		function draw(pElement, datatable, pOptions){
-			
-			$.extend(true, settings, pOptions);
-			
-			var chart = new google.visualization.ColumnChart(pElement);
-            chart.draw(datatable, pOptions);
-			
-			return chart;
-			
-		};
-		
 	};
 	
-	c.charts.Column.prototype = Object.create(c.charts.ChartBase.prototype);
+	c.charts.Geo.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);

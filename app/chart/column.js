@@ -9,30 +9,7 @@
 			
 		var self = this;
 		
-		c.charts.ChartBase.call(self, options, element);
-		
-		self._draw = draw;
-		
-		var settings = {
-            source: '',
-            data: null,
-            options: {
-                legend: { position: 'none' },
-                height: 100,
-                width: 100,
-                backgroundColor: 'transparent',
-				bar: {groupWidth: "95%"},
-                tooltip: {
-                    textStyle: {
-                        fontSize: 10
-                    }
-                }
-            },
-            selected: function (pchart) { },
-            mouseOver: function (pchart) { }
-        };
-		
-		function draw(pElement, datatable, pOptions){
+		self.draw = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
@@ -41,6 +18,21 @@
 			
 			return chart;
 			
+		};
+		
+		c.charts.ChartBase.call(self, options, element);
+		
+		var settings = {
+			legend: { position: 'none' },
+            height: 100,
+            width: 100,
+            backgroundColor: 'transparent',
+			bar: {groupWidth: "95%"},
+            tooltip: {
+                textStyle: {
+                    fontSize: 10
+                }
+            }
 		};
 		
 	};
