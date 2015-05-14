@@ -45,7 +45,7 @@ describe('ChartBase - ', function () {
 		}		
 	});
 	
-	it('Must validate the data source of the ChartBase.', function () { 
+	it("Must validate ChartBase's data source ", function () { 
 		
 		expect(function(){
 			
@@ -194,7 +194,7 @@ describe('ChartBase - ', function () {
 		
 	});
 	
-	it('Must capture the event click of mouse', function () {
+	it('Must capture the click event', function () {
 		
 		var eventExpected = {};
 		

@@ -9,7 +9,7 @@ describe('EnumChart - ', function () {
 		
 	});
 	
-	it("The properties value can't be changed", function () {
+	it("The property values can't be changed", function () {
 		
 		try {
 			
