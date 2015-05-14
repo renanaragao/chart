@@ -33,14 +33,21 @@ describe('Geo Chart - ', function () {
 	
 	it('Must create a Geo Chart', function () {	
 		
-		var geoChart = new window.chart.charts.Geo({ data:[], options: 'options' }, { element: 'div' });
+		var expectedOptions = {
+                height: 500,
+                width: 12,
+				region: 'BR', //Brazil
+				displayMode: 'provinces'
+            } ;
 		
-		var returnChart = geoChart.draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
+		var geoChart = new window.chart.charts.Geo({ data:[], options: expectedOptions }, { element: 'div' });
+		
+		var returnChart = geoChart.draw({ element: 'div' }, {source: 'source'}, expectedOptions);
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});
 		expect(chartSource).toEqual({source: 'source'});
-		expect(chartOptions).toEqual({options: 'options'}); 
+		expect(chartOptions).toEqual(expectedOptions); 
 		expect(chart.charts.Geo.prototype instanceof chart.charts.ChartBase).toEqual(true);
 		
 	});

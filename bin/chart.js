@@ -13,9 +13,11 @@ var chart = chart || {};
 	c.charts = c.charts || {};
 	
 	c.charts.ChartBase = function (pOptions, el) {
-		
+        
         var self = this,
-            options = pOptions;
+            options = pOptions,
+            chart,
+            dataTableChart;
         
 		var settings = {
             source: '',
@@ -44,13 +46,13 @@ var chart = chart || {};
             
             var dataTable = getDataTable(settings.data);
             
-            var data = window.google.visualization.arrayToDataTable(dataTable);
+            dataTableChart = window.google.visualization.arrayToDataTable(dataTable);
             
-            if(settings.responsive) settings.options.width = data.getNumberOfColumns() * 65;
+            if(settings.responsive) settings.options.width = dataTableChart.getNumberOfColumns() * 65;
             
-            var chart = self.draw(el, data, settings.options);
+            chart = self.draw(el, dataTableChart, settings.options);
             
-            window.google.visualization.events.addListener(chart, 'select', settings.select);
+            window.google.visualization.events.addListener(chart, 'select', select);
             
         }
         
@@ -166,6 +168,18 @@ var chart = chart || {};
             
         }
         
+        function select() {
+            
+            var dataChart = {};
+            
+             dataChart.text =  dataTableChart.getValue(chart.getSelection()[0].row, 0);
+
+            chart.setSelection();
+
+            settings.select(dataChart);
+            
+        }
+        
 	};
 	
 })(window.chart);
@@ -181,31 +195,28 @@ var chart = chart || {};
 			
 		var self = this;
 		
+		var settings = {
+			legend: { position: 'none' },
+            height: 100,
+            width: 100,
+            backgroundColor: 'transparent',
+			bar: {groupWidth: "95%"}
+			
+		};
+		
 		self.draw = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
 			var chart = new window.google.visualization.ColumnChart(pElement);
-            chart.draw(datatable, pOptions);
+            chart.draw(datatable, settings);
 			
 			return chart;
 			
 		};
 		
 		c.charts.ChartBase.call(self, options, element);
-		
-		var settings = {
-			legend: { position: 'none' },
-            height: 100,
-            width: 100,
-            backgroundColor: 'transparent',
-			bar: {groupWidth: "95%"},
-            tooltip: {
-                textStyle: {
-                    fontSize: 10
-                }
-            }
-		};
+	
 		
 	};
 	
@@ -222,13 +233,20 @@ var chart = chart || {};
 	c.charts.Geo = function(options, element){
 			
 		var self = this;
-				
+		
+		var settings = {
+                height: 100,
+                width: 100,
+				region: 'BR', //Brazil
+				displayMode: 'provinces'
+            };
+		
 		self.draw = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
 			var chart = new google.visualization.GeoChart(pElement);
-            chart.draw(datatable, pOptions);
+            chart.draw(datatable, settings);
 			
 			return chart;
 			
@@ -236,27 +254,7 @@ var chart = chart || {};
 		
 		c.charts.ChartBase.call(self, options, element);
 		
-		var settings = {
-            source: '',
-            data: null,
-            options: {
-                legend: { position: 'none' },
-                height: 100,
-                width: 100,
-                backgroundColor: 'transparent',
-				bar: {groupWidth: "95%"},
-                tooltip: {
-                    textStyle: {
-                        fontSize: 10
-                    }
-                },
-				region: 'BR', //Brazil
-				displayMode: 'markers',
-  				colorAxis: {colors: ['#0000FF','#0000CD','#00008B']}
-            },
-            selected: function (pchart) { },
-            mouseOver: function (pchart) { }
-        };
+		
 		
 	};
 	

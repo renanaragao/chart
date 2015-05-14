@@ -55,9 +55,7 @@ describe('ChartBase - ', function () {
 		
 		window.google = google;
 		
-		new chart.charts.ChartBase({source: 'url'});
-		
-		new chart.charts.ChartBase({data: 'url'});
+		new chart.charts.ChartBase({data: []});
 		
 	});
 	
@@ -85,9 +83,7 @@ describe('ChartBase - ', function () {
 			['bh', {v: 0, f: '0'}, {v: 20, f: '20.00'}, {v: 20, f: '20.00'}],
 			
 		];
-		
 		callbackExpected();
-		
 		expect(dataTable).toEqual(dataTableExpected);
 		
 	});
@@ -103,6 +99,7 @@ describe('ChartBase - ', function () {
 		var ChartFake = function (options, el) {
 			
 			var self = this;
+			
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
@@ -128,9 +125,7 @@ describe('ChartBase - ', function () {
 		];;
 		
 		new ChartFake(options, el);
-		
 		callbackExpected();
-		
 		expect(elementExpected).toEqual(el);
 		expect(optionsExpected).toEqual({width: 15, height: 100});
 		expect(dataTableExpected).toEqual(dataTable);
@@ -181,15 +176,11 @@ describe('ChartBase - ', function () {
 		ChartFake.prototype = Object.create(chart.charts.ChartBase.prototype);
 		
 		new ChartFake({data: data, options: {width: 23}});
-		
 		callbackExpected();
-		
 		expect(optionsExpected).toEqual({width: 23, height: 100});
 		
 		new ChartFake({data: data, options: {width: 23}, responsive: true});
-		
 		callbackExpected();
-		
 		expect(optionsExpected).toEqual({width: 130, height: 100});
 		
 	});
@@ -269,9 +260,7 @@ describe('ChartBase - ', function () {
 					expectedChart = chart;
 				}
 			});
-		
 		callbackExpected();
-		
 		expect(eventExpected.idChart).toEqual(45);
 		expect(eventExpected.event).toEqual('select');
 		

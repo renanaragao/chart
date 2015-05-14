@@ -8,13 +8,20 @@
 	c.charts.Geo = function(options, element){
 			
 		var self = this;
-				
+		
+		var settings = {
+                height: 100,
+                width: 100,
+				region: 'BR', //Brazil
+				displayMode: 'provinces'
+            };
+		
 		self.draw = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
 			var chart = new google.visualization.GeoChart(pElement);
-            chart.draw(datatable, pOptions);
+            chart.draw(datatable, settings);
 			
 			return chart;
 			
@@ -22,27 +29,7 @@
 		
 		c.charts.ChartBase.call(self, options, element);
 		
-		var settings = {
-            source: '',
-            data: null,
-            options: {
-                legend: { position: 'none' },
-                height: 100,
-                width: 100,
-                backgroundColor: 'transparent',
-				bar: {groupWidth: "95%"},
-                tooltip: {
-                    textStyle: {
-                        fontSize: 10
-                    }
-                },
-				region: 'BR', //Brazil
-				displayMode: 'markers',
-  				colorAxis: {colors: ['#0000FF','#0000CD','#00008B']}
-            },
-            selected: function (pchart) { },
-            mouseOver: function (pchart) { }
-        };
+		
 		
 	};
 	

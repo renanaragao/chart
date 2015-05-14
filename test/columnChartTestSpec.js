@@ -33,14 +33,23 @@ describe('Column Chart - ', function () {
 	
 	it('Must create a Column Chart', function () {	
 		
-		var columnChart = new chart.charts.Column({ data:[], options: 'options' }, { element: 'div' });
+		var expectedOptions = {
+			legend: { position: 'none' },
+            height: 100,
+            width: 250,
+            backgroundColor: 'transparent',
+			bar: {groupWidth: "95%"}
 			
-		var returnChart = columnChart.draw({ element: 'div' }, {source: 'source'}, { options: 'options' });
+		};
+		
+		var columnChart = new chart.charts.Column({ data:[], options: {width: 250} }, { element: 'div' });
+			
+		var returnChart = columnChart.draw({ element: 'div' }, {source: 'source'}, {width: 250});
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});
 		expect(chartSource).toEqual({source: 'source'});
-		expect(chartOptions).toEqual({options: 'options'}); 
+		expect(chartOptions).toEqual(expectedOptions); 
 		expect(chart.charts.Column.prototype instanceof chart.charts.ChartBase).toEqual(true);
 		
 	});

@@ -4,7 +4,7 @@
 	c.charts = c.charts || {};
 	
 	c.charts.ChartBase = function (pOptions, el) {
-		
+        
         var self = this,
             options = pOptions,
             chart,

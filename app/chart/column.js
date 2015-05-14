@@ -9,31 +9,28 @@
 			
 		var self = this;
 		
+		var settings = {
+			legend: { position: 'none' },
+            height: 100,
+            width: 100,
+            backgroundColor: 'transparent',
+			bar: {groupWidth: "95%"}
+			
+		};
+		
 		self.draw = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
 			var chart = new window.google.visualization.ColumnChart(pElement);
-            chart.draw(datatable, pOptions);
+            chart.draw(datatable, settings);
 			
 			return chart;
 			
 		};
 		
 		c.charts.ChartBase.call(self, options, element);
-		
-		var settings = {
-			legend: { position: 'none' },
-            height: 100,
-            width: 100,
-            backgroundColor: 'transparent',
-			bar: {groupWidth: "95%"},
-            tooltip: {
-                textStyle: {
-                    fontSize: 10
-                }
-            }
-		};
+	
 		
 	};
 	
