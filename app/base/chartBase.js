@@ -9,6 +9,7 @@
             options = pOptions,
             chart,
             dataTableChart;
+               
         
 		var settings = {
             source: '',
@@ -24,16 +25,22 @@
         
         $.extend(true, settings, options);
         
-        init();
+        self.drawChart = drawChart;
         
+        init();
+                
         function init() {
             		
             validate();
             window.google.setOnLoadCallback(drawChart);
             
-        }
+        }                
         
-        function drawChart() {
+        function drawChart(data, options) {
+            
+            if(data) settings.data = data;
+            
+            if(options) $.extend(true, settings.options, options);
             
             var dataTable = getDataTable(settings.data);
             
@@ -41,7 +48,7 @@
             
             if(settings.responsive) settings.options.width = dataTableChart.getNumberOfColumns() * 65;
             
-            chart = self.draw(el, dataTableChart, settings.options);
+            chart = self._draw(el, dataTableChart, settings.options);
             
             window.google.visualization.events.addListener(chart, 'select', select);
             

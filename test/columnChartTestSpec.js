@@ -44,7 +44,7 @@ describe('Column Chart - ', function () {
 		
 		var columnChart = new chart.charts.Column({ data:[], options: {width: 250} }, { element: 'div' });
 			
-		var returnChart = columnChart.draw({ element: 'div' }, {source: 'source'}, {width: 250});
+		var returnChart = columnChart._draw({ element: 'div' }, {source: 'source'}, {width: 250});
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});

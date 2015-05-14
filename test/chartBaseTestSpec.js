@@ -73,7 +73,22 @@ describe('ChartBase - ', function () {
 		
 		window.google = google;
 		
-		new chart.charts.ChartBase({data: data});
+		var ChartFake = function (options, el) {
+		
+		var self = this;				
+		
+		chart.charts.ChartBase.call(self, options, el);
+		
+		self._draw = draw;
+		
+		function draw(pElement, datatable, pOptions) {
+				dataTableExpected = datatable;
+			}
+		}
+		
+		ChartFake.prototype = Object.create(chart.charts.ChartBase.prototype);
+		
+		new ChartFake({data: data});
 		
 		var dataTableExpected = [
 			['Grupo', 'a', 'b', 'c'],
@@ -98,12 +113,12 @@ describe('ChartBase - ', function () {
 		
 		var ChartFake = function (options, el) {
 			
-			var self = this;
+			var self = this;		
 			
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self.draw = draw;
+			self._draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				elementExpected = pElement;
@@ -122,7 +137,7 @@ describe('ChartBase - ', function () {
 			['rj', {v: 0, f: '0'}, {v: 4, f: '4.00'}, {v: 6, f: '6.00'}],
 			['sc', {v: 8, f: '8.00'}, {v: 0, f: '0'}, {v: 10, f: '10.00'}],
 			['bh', {v: 0, f: '0'}, {v: 20, f: '20.00'}, {v: 20, f: '20.00'}],
-		];;
+		];
 		
 		new ChartFake(options, el);
 		callbackExpected();
@@ -166,7 +181,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self.draw = draw;
+			self._draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				optionsExpected = pOptions;
@@ -236,7 +251,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self.draw = draw;
+			self._draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				return {
@@ -266,6 +281,73 @@ describe('ChartBase - ', function () {
 		
 		eventExpected.select();
 		expect(expectedChart).toEqual({text: 'rj'});
+		
+	});
+	
+	
+	it('Must exists drawChart function', function(){
+		
+		window.google = {
+				setOnLoadCallback: function (callback) {
+					callbackExpected = callback;
+				},
+				visualization: {
+				arrayToDataTable: function (data) {
+					dataTable = data;
+					
+					return {
+						getNumberOfColumns: function () {
+							return 2;
+						}
+					};
+				},
+				events: {
+						addListener: function (chart, event, select) {
+						}
+					}
+			},
+			load: function (p1, p2, p3) { }
+		};
+		
+		var chartBase = new chart.charts.ChartBase({data: [], options: { width: 500 }},{el: 'div'});
+		
+		var drawFunctionP1, drawFunctionP2, drawFunctionP3;
+		
+		chartBase._draw = function(p1, p2, p3){
+			
+			drawFunctionP1 = p1;			
+			drawFunctionP2 = p2;
+			drawFunctionP3 = p3;
+			
+		};
+					
+		expect(chartBase.drawChart).toBeDefined();
+		
+		var dataSource = [
+			            { Grupo: 'sp', Descricao: 'a', Valor: 10 },
+			            { Grupo: 'sp', Descricao: 'b', Valor: 5 },
+			            { Grupo: 'sp', Descricao: 'c', Valor: 2 },
+			            { Grupo: 'rj', Descricao: 'b', Valor: 4 },
+			            { Grupo: 'rj', Descricao: 'c', Valor: 6 },
+			            { Grupo: 'sc', Descricao: 'a', Valor: 8 },
+			            { Grupo: 'sc', Descricao: 'c', Valor: 10 },
+			            { Grupo: 'bh', Descricao: 'c', Valor: 20 },
+			            { Grupo: 'bh', Descricao: 'b', Valor: 20 }
+			      ];
+		
+		chartBase.drawChart(dataSource, { width: 120 });
+		
+		var dataTableExpected = [
+			['Grupo', 'a', 'b', 'c'],
+			['sp', {v: 10, f: '10.00'}, {v: 5, f: '5.00'}, {v: 2, f: '2.00'}],
+			['rj', {v: 0, f: '0'}, {v: 4, f: '4.00'}, {v: 6, f: '6.00'}],
+			['sc', {v: 8, f: '8.00'}, {v: 0, f: '0'}, {v: 10, f: '10.00'}],
+			['bh', {v: 0, f: '0'}, {v: 20, f: '20.00'}, {v: 20, f: '20.00'}],
+		];
+		
+		expect(drawFunctionP1).toEqual({el: 'div'});
+		expect(drawFunctionP3).toEqual({ height: 100, width: 120});
+		expect(dataTable).toEqual(dataTableExpected);	
 		
 	});
 	

@@ -16,7 +16,7 @@
 				displayMode: 'provinces'
             };
 		
-		self.draw = function (pElement, datatable, pOptions){
+		self._draw = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
