@@ -198,7 +198,21 @@ describe('ChartBase - ', function () {
 		
 		var eventExpected = {};
 		
-		var selectedChart = false;
+		var expectedChart = {};
+		
+		var setSelecttion = false;
+		
+		var dataSource = [
+			            { Grupo: 'sp', Descricao: 'a', Valor: 10 },
+			            { Grupo: 'sp', Descricao: 'b', Valor: 5 },
+			            { Grupo: 'sp', Descricao: 'c', Valor: 2 },
+			            { Grupo: 'rj', Descricao: 'b', Valor: 4 },
+			            { Grupo: 'rj', Descricao: 'c', Valor: 6 },
+			            { Grupo: 'sc', Descricao: 'a', Valor: 8 },
+			            { Grupo: 'sc', Descricao: 'c', Valor: 10 },
+			            { Grupo: 'bh', Descricao: 'c', Valor: 20 },
+			            { Grupo: 'bh', Descricao: 'b', Valor: 20 }
+			      ];
 		
 		window.google = {
 				setOnLoadCallback: function (callback) {
@@ -206,10 +220,17 @@ describe('ChartBase - ', function () {
 					},
 				visualization: {
 					arrayToDataTable: function (data) {
+							
+							return {
+								getValue: function (indexRow, indexColumn) {
+									if(indexRow === 1 && indexColumn === 0) return 'rj';
+								}
+							};
+							
 						},
 					events: {
 						addListener: function (chart, event, select) {
-							eventExpected.chart = chart;
+							eventExpected.idChart = chart.id;
 							eventExpected.event = event;
 							eventExpected.select = select;
 						}
@@ -227,27 +248,35 @@ describe('ChartBase - ', function () {
 			self.draw = draw;
 			
 			function draw(pElement, datatable, pOptions) {
-				return 'chart';
+				return {
+					getSelection: function () {
+						return [{row: 1}];
+					},
+					setSelection: function () {
+						setSelecttion = true;
+					},
+					id: 45
+				};
 			}
 		}
 		
 		ChartFake.prototype = Object.create(chart.charts.ChartBase.prototype);
 		
 		new ChartFake({
-				data: [],  
+				data: dataSource,  
 				responsive: false,
 				select: function (chart) {
-					selectedChart = true;
+					expectedChart = chart;
 				}
 			});
 		
 		callbackExpected();
 		
-		expect(eventExpected.chart).toEqual('chart');
+		expect(eventExpected.idChart).toEqual(45);
 		expect(eventExpected.event).toEqual('select');
 		
 		eventExpected.select();
-		expect(selectedChart).toEqual(true);
+		expect(expectedChart).toEqual({text: 'rj'});
 		
 	});
 	

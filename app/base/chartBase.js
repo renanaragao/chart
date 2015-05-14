@@ -6,7 +6,9 @@
 	c.charts.ChartBase = function (pOptions, el) {
 		
         var self = this,
-            options = pOptions;
+            options = pOptions,
+            chart,
+            dataTableChart;
         
 		var settings = {
             source: '',
@@ -35,13 +37,13 @@
             
             var dataTable = getDataTable(settings.data);
             
-            var data = window.google.visualization.arrayToDataTable(dataTable);
+            dataTableChart = window.google.visualization.arrayToDataTable(dataTable);
             
-            if(settings.responsive) settings.options.width = data.getNumberOfColumns() * 65;
+            if(settings.responsive) settings.options.width = dataTableChart.getNumberOfColumns() * 65;
             
-            var chart = self.draw(el, data, settings.options);
+            chart = self.draw(el, dataTableChart, settings.options);
             
-            window.google.visualization.events.addListener(chart, 'select', settings.select);
+            window.google.visualization.events.addListener(chart, 'select', select);
             
         }
         
@@ -154,6 +156,18 @@
         function validate() {
             
             if(!settings.source && !settings.data) throw new Error("Data source not found.");
+            
+        }
+        
+        function select() {
+            
+            var dataChart = {};
+            
+             dataChart.text =  dataTableChart.getValue(chart.getSelection()[0].row, 0);
+
+            chart.setSelection();
+
+            settings.select(dataChart);
             
         }
         
