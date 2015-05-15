@@ -38,7 +38,7 @@
         
         function drawChart(data, options) {
             
-            if(data) settings.data = data;
+            if(data && data.length > 0) settings.data = data;
             
             if(options) $.extend(true, settings.options, options);
             
