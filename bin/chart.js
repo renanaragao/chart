@@ -25,8 +25,6 @@ var chart = chart || {};
             data: null,
             responsive: false,
             options: {
-                height: 100,
-                width: 100
             },
             select: function (pchart) { },
             mouseOver: function (pchart) { }
@@ -47,7 +45,7 @@ var chart = chart || {};
         
         function drawChart(data, options) {
             
-            if(data) settings.data = data;
+            if(data && data.length > 0) settings.data = data;
             
             if(options) $.extend(true, settings.options, options);
             
@@ -55,7 +53,13 @@ var chart = chart || {};
             
             dataTableChart = window.google.visualization.arrayToDataTable(dataTable);
             
-            if(settings.responsive) settings.options.width = dataTableChart.getNumberOfColumns() * 65;
+            if(settings.responsive){
+                
+                var resul = dataTableChart.getNumberOfColumns() * 65;
+                
+                if(resul > settings.options.width) settings.options.width = resul;
+                
+            }
             
             chart = self._draw(el, dataTableChart, settings.options);
             
