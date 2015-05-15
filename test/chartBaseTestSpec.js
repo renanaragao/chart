@@ -142,7 +142,7 @@ describe('ChartBase - ', function () {
 		new ChartFake(options, el);
 		callbackExpected();
 		expect(elementExpected).toEqual(el);
-		expect(optionsExpected).toEqual({width: 15, height: 100});
+		expect(optionsExpected).toEqual({width: 15});
 		expect(dataTableExpected).toEqual(dataTable);
 		
 	});
@@ -192,11 +192,11 @@ describe('ChartBase - ', function () {
 		
 		new ChartFake({data: data, options: {width: 23}});
 		callbackExpected();
-		expect(optionsExpected).toEqual({width: 23, height: 100});
+		expect(optionsExpected).toEqual({width: 23});
 		
 		new ChartFake({data: data, options: {width: 23}, responsive: true});
 		callbackExpected();
-		expect(optionsExpected).toEqual({width: 130, height: 100});
+		expect(optionsExpected).toEqual({width: 130});
 		
 	});
 	
@@ -346,7 +346,7 @@ describe('ChartBase - ', function () {
 		];
 		
 		expect(drawFunctionP1).toEqual({el: 'div'});
-		expect(drawFunctionP3).toEqual({ height: 100, width: 120});
+		expect(drawFunctionP3).toEqual({width: 120});
 		expect(dataTable).toEqual(dataTableExpected);	
 		
 	});

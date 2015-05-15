@@ -16,8 +16,6 @@
             data: null,
             responsive: false,
             options: {
-                height: 100,
-                width: 100
             },
             select: function (pchart) { },
             mouseOver: function (pchart) { }
