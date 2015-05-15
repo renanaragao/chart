@@ -147,7 +147,7 @@ describe('ChartBase - ', function () {
 		
 	});
 	
-	it("If options's property 'responsive' to equal true, must calculate width based in number of columns", function () {
+	it("If options's property 'responsive' to equal true and if the multiplication between column numbers and 65 to be bigger than chart's width, must calculate width based in number of columns", function () {
 		
 		var optionsExpected = {
 			width: 23
@@ -197,6 +197,10 @@ describe('ChartBase - ', function () {
 		new ChartFake({data: data, options: {width: 23}, responsive: true});
 		callbackExpected();
 		expect(optionsExpected).toEqual({width: 130});
+		
+		new ChartFake({data: data, options: {width: 230}, responsive: true});
+		callbackExpected();
+		expect(optionsExpected).toEqual({width: 230});
 		
 	});
 	

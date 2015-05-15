@@ -44,7 +44,13 @@
             
             dataTableChart = window.google.visualization.arrayToDataTable(dataTable);
             
-            if(settings.responsive) settings.options.width = dataTableChart.getNumberOfColumns() * 65;
+            if(settings.responsive){
+                
+                var resul = dataTableChart.getNumberOfColumns() * 65;
+                
+                if(resul > settings.options.width) settings.options.width = resul;
+                
+            }
             
             chart = self._draw(el, dataTableChart, settings.options);
             
