@@ -21,6 +21,7 @@ module.exports = function(config) {
       'app/base/chartBase.js',
       'app/enumChart.js',
       'app/chart/*.js',
+      'app/moneyFormat.js',
       'test/*.js'
     ],
 

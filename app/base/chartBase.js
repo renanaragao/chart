@@ -18,7 +18,8 @@
             options: {
             },
             select: function (pchart) { },
-            mouseOver: function (pchart) { }
+            mouseOver: function (pchart) { },
+            moneyFormat: null
         };
         
         $.extend(true, settings, options);
@@ -151,7 +152,7 @@
 
             });
 
-            if (found.length === 0) return { v: 0, f: '0' };
+            if (found.length === 0) return { v: 0, f: window.chart.moneyFormat('0', settings.moneyFormat) };
 
             var value = found.reduce(function (ant, current) {
 
@@ -160,7 +161,7 @@
             }).Valor;
 
 
-            return { v: value, f: (value).toFixed(2) };
+            return { v: value, f: window.chart.moneyFormat((value).toFixed(2), settings.moneyFormat) };
             
         }
         
@@ -181,7 +182,7 @@
             settings.select(dataChart);
             
         }
-        
+
 	};
 	
 })(window.chart);
