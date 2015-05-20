@@ -10,9 +10,7 @@
 		var self = this;
 		
 		var settings = {
-                height: 100,
-                width: 100,
-				region: 'BR', //Brazil
+               	region: 'BR', //Brazil
 				displayMode: 'provinces'
             };
 		

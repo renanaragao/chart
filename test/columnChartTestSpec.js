@@ -35,11 +35,9 @@ describe('Column Chart - ', function () {
 		
 		var expectedOptions = {
 			legend: { position: 'none' },
-            height: 100,
-            width: 250,
             backgroundColor: 'transparent',
-			bar: {groupWidth: "95%"}
-			
+			bar: {groupWidth: "95%"},
+			width: 250
 		};
 		
 		var columnChart = new chart.charts.Column({ data:[], options: {width: 250} }, { element: 'div' });

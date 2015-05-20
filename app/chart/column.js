@@ -11,8 +11,6 @@
 		
 		var settings = {
 			legend: { position: 'none' },
-            height: 100,
-            width: 100,
             backgroundColor: 'transparent',
 			bar: {groupWidth: "95%"}
 			
