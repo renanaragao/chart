@@ -209,8 +209,6 @@ var chart = chart || {};
 		
 		var settings = {
 			legend: { position: 'none' },
-            height: 100,
-            width: 100,
             backgroundColor: 'transparent',
 			bar: {groupWidth: "95%"}
 			
@@ -247,9 +245,7 @@ var chart = chart || {};
 		var self = this;
 		
 		var settings = {
-                height: 100,
-                width: 100,
-				region: 'BR', //Brazil
+               	region: 'BR', //Brazil
 				displayMode: 'provinces'
             };
 		
