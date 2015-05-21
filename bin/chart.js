@@ -3,7 +3,8 @@ var chart = chart || {};
 	
 	c.enumChart = Object.freeze({
 		column: 1,
-		geo: 2
+		geo: 2,
+		line: 3
 	});
 	
 })(window.chart);
@@ -269,6 +270,41 @@ var chart = chart || {};
 	c.charts.Geo.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);
+/// <reference path="../../typings/jquery/jquery.d.ts"/>
+
+(function(c){
+	'use strict';
+	
+	c.charts = c.charts || {};
+		
+	c.charts.Line = function(options, element){
+			
+		var self = this;
+		
+		var settings = {
+			legend: { position: 'none' },
+            backgroundColor: 'transparent'			
+		};
+		
+		self._draw = function (pElement, datatable, pOptions){
+			
+			$.extend(true, settings, pOptions);
+			
+			var chart = new window.google.visualization.LineChart(pElement);
+            chart.draw(datatable, settings);
+			
+			return chart;
+			
+		};
+		
+		c.charts.ChartBase.call(self, options, element);
+	
+		
+	};
+	
+	c.charts.Line.prototype = Object.create(c.charts.ChartBase.prototype);
+	
+})(window.chart);
 (function(c) {
 	
 	c.factory = c.factory || {};
@@ -278,6 +314,7 @@ var chart = chart || {};
 		var Charts = {};
 		Charts[c.enumChart.geo] = c.charts.Geo;
 		Charts[c.enumChart.column] = c.charts.Column;
+		Charts[c.enumChart.line] = c.charts.Line;
 	
 		return {
 			createNew: createNew

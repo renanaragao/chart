@@ -8,6 +8,7 @@
     
 	<div id="columnChart"></div>
     <div id="geoChart"></div>
+    <div id="lineChart"></div>
        
     <script src="..\node_modules\jquery\dist\jquery.js" type="text/javascript"></script>
     <script src="..\lib\google.grafico.js" type="text/javascript"></script>
@@ -25,10 +26,10 @@
             { Grupo: 'sc', Descricao: 'c', Valor: 10 },
             { Grupo: 'bh', Descricao: 'c', Valor: 20 },
             { Grupo: 'bh', Descricao: 'b', Valor: 20 }
-    ], options:{width: 500, height: 500}});
+            ], options:{width: 500, height: 500}});
     
     
-    $('#geoChart').chart(chart.enumChart.geo, {data:[
+        $('#geoChart').chart(chart.enumChart.geo, {data:[
             { Grupo: 'São Paulo', Descricao: 'Real Value', Valor: 10 },
             { Grupo: 'São Paulo', Descricao: 'Buy Value', Valor: 5 },
             { Grupo: 'Rio de Janeiro', Descricao: 'Real Value', Valor: 4 },
@@ -37,17 +38,29 @@
             { Grupo: 'Santa Catarina', Descricao: 'Buy Value', Valor: 10 },
             { Grupo: 'Bahia', Descricao: 'Real Value', Valor: 20 },
             { Grupo: 'Bahia', Descricao: 'Buy Value', Valor: 20 }
-    ], options:{
-        width: 1300, 
-        height: 1500,
-        region: 'BR',
-        resolution: 'provinces'
-        },
-        select: function (chart) {
-            console.log(chart);
-        }
-     });
-});			
+            ], options:{
+                width: 1300, 
+                height: 1500,
+                region: 'BR',
+                resolution: 'provinces'
+                },
+                select: function (chart) {
+                    console.log(chart);
+                }
+             });
+             
+             $('#lineChart').chart(chart.enumChart.line, {data:[
+            { Grupo: 'sp', Descricao: 'a', Valor: 10 },
+            { Grupo: 'sp', Descricao: 'b', Valor: 5 },
+            { Grupo: 'sp', Descricao: 'c', Valor: 2 },
+            { Grupo: 'rj', Descricao: 'b', Valor: 4 },
+            { Grupo: 'rj', Descricao: 'c', Valor: 6 },
+            { Grupo: 'sc', Descricao: 'a', Valor: 8 },
+            { Grupo: 'sc', Descricao: 'c', Valor: 10 },
+            { Grupo: 'bh', Descricao: 'c', Valor: 20 },
+            { Grupo: 'bh', Descricao: 'b', Valor: 20 }
+            ], options:{width: 500, height: 500}});
+        });			
 	</script> 
     
 </body>

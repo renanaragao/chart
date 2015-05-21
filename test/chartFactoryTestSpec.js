@@ -50,6 +50,16 @@ describe('ChartFactory - ', function () {
 		expect(chartCreated).toBeDefined();
 		
 	});
+	
+	it('chartFactory must create a new chart based on passed parameter (parameter chart.enumChat.line)', function () {
+		
+		var chartCreated = chart.factory.chartFactory().createNew(chart.enumChart.line, {data: []}, {});
+		
+		expect(chartCreated).toBeDefined();
+		
+	});
+	
+	
 
 	
 });

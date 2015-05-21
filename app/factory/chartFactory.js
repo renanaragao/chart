@@ -7,6 +7,7 @@
 		var Charts = {};
 		Charts[c.enumChart.geo] = c.charts.Geo;
 		Charts[c.enumChart.column] = c.charts.Column;
+		Charts[c.enumChart.line] = c.charts.Line;
 	
 		return {
 			createNew: createNew
