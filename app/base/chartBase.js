@@ -152,7 +152,7 @@
 
             });
 
-            if (found.length === 0) return { v: 0, f: window.chart.moneyFormat('0', settings.moneyFormat) };
+            if (found.length === 0) return { v: 0, f: window.chart.moneyFormat((0).toFixed(2), settings.moneyFormat) };
 
             var value = found.reduce(function (ant, current) {
 

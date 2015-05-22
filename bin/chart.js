@@ -162,7 +162,7 @@ var chart = chart || {};
 
             });
 
-            if (found.length === 0) return { v: 0, f: window.chart.moneyFormat('0', settings.moneyFormat) };
+            if (found.length === 0) return { v: 0, f: window.chart.moneyFormat((0).toFixed(2), settings.moneyFormat) };
 
             var value = found.reduce(function (ant, current) {
 
@@ -344,40 +344,59 @@ var chart = chart || {};
 	c.moneyFormat = moneyFormat;
         
      function moneyFormat(value, format) {
-                  
-         var formats = [
-            {
+        
+        var formats = {
+            'BRL': {
                 description: 'BRL',
                 symbol: 'R$ ',
                 centsSeparator: ',',
                 thousandsSeparator: '.'
-            }];
-
-            var standard = {
+            },
+            'USD': {
                 description: 'USD',
-                symbol: '',
+                symbol: 'US$ ',
                 centsSeparator: '.',
-                thousandsSeparator: ''
-            };
-                        
-            if (format) standard = formats.filter(function (item) { return item.description === format; })[0];
-
-            var formattedValue = replaceSeparators(value, standard);
-
-            formattedValue = standard.symbol + formattedValue;
-
-            return formattedValue.trim();
-         
+                thousandsSeparator: ','
+            },
+            'EUR': {
+                description: 'EUR',
+                symbol: '€ ',
+                centsSeparator: ',',
+                thousandsSeparator: '.'
+            },
+            'HKD': {
+                description: 'HKD',
+                symbol: 'HK$ ',
+                centsSeparator: '.',
+                thousandsSeparator: ','
+            }
+        };
+    
+        var settings = formats[format] || {
+            description: 'USD',
+            symbol: '',
+            centsSeparator: '.',
+            thousandsSeparator: ','
+        };
+    
+        var formattedValue = replaceSeparators(value, settings);
+    
+        formattedValue = settings.symbol + formattedValue;
+    
+        return formattedValue.trim();
+                         
      };        
         
     function replaceSeparators(value, settings) {
         
         var regex, match, countGroupRegex;
     
-        if (typeof value !== "string") return '';
-    
+        var length = value.length;
+       
+        if (value < 0) length -= 1;
+        
         countGroupRegex = value.length / 3;
-    
+                 
         if (countGroupRegex <= 2) {
             regex = /(\d{1,3})\.(\d{2})/g;
             match = '$1' + settings.centsSeparator + '$2';
