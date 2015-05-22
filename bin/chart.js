@@ -395,7 +395,7 @@ var chart = chart || {};
        
         if (value < 0) length -= 1;
         
-        countGroupRegex = value.length / 3;
+        countGroupRegex = length / 3;
                  
         if (countGroupRegex <= 2) {
             regex = /(\d{1,3})\.(\d{2})/g;
