@@ -41,7 +41,7 @@ describe('Line Chart - ', function () {
 		
 		var lineChart = new chart.charts.Line({ data:[], options: {width: 250} }, { element: 'div' });
 			
-		var returnChart = lineChart._draw({ element: 'div' }, {source: 'source'}, {width: 250});
+		var returnChart = lineChart._drawTemplateMethod({ element: 'div' }, {source: 'source'}, {width: 250});
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});

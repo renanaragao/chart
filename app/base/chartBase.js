@@ -53,7 +53,7 @@
                 
             }
             
-            chart = self._draw(el, dataTableChart, settings.options);
+            chart = self._drawTemplateMethod(el, dataTableChart, settings.options);
             
             window.google.visualization.events.addListener(chart, 'select', select);
             

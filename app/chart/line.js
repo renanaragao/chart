@@ -5,7 +5,11 @@
 	
 	c.charts = c.charts || {};
 		
-	c.charts.Line = function(options, element){
+	c.charts.Line = line;
+    
+    c.charts.Line.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function line (options, element){
 			
 		var self = this;
 		
@@ -14,7 +18,7 @@
             backgroundColor: 'transparent'			
 		};
 		
-		self._draw = function (pElement, datatable, pOptions){
+		self._drawTemplateMethod = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
@@ -29,7 +33,5 @@
 	
 		
 	};
-	
-	c.charts.Line.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);

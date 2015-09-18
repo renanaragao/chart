@@ -79,7 +79,7 @@ describe('ChartBase - ', function () {
 		
 		chart.charts.ChartBase.call(self, options, el);
 		
-		self._draw = draw;
+		self._drawTemplateMethod = draw;
 		
 		function draw(pElement, datatable, pOptions) {
 				dataTableExpected = datatable;
@@ -118,7 +118,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self._draw = draw;
+			self._drawTemplateMethod = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				elementExpected = pElement;
@@ -181,7 +181,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self._draw = draw;
+			self._drawTemplateMethod = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				optionsExpected = pOptions;
@@ -255,7 +255,7 @@ describe('ChartBase - ', function () {
 			
 			chart.charts.ChartBase.call(self, options, el);
 			
-			self._draw = draw;
+			self._drawTemplateMethod = draw;
 			
 			function draw(pElement, datatable, pOptions) {
 				return {
@@ -317,7 +317,7 @@ describe('ChartBase - ', function () {
 		
 		var drawFunctionP1, drawFunctionP2, drawFunctionP3;
 		
-		chartBase._draw = function(p1, p2, p3){
+		chartBase._drawTemplateMethod = function(p1, p2, p3){
 			
 			drawFunctionP1 = p1;			
 			drawFunctionP2 = p2;

@@ -5,7 +5,11 @@
 	
 	c.charts = c.charts || {};
 		
-	c.charts.Column = function(options, element){
+	c.charts.Column = column;
+    
+    c.charts.Column.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function column(options, element){
 			
 		var self = this;
 		
@@ -16,7 +20,7 @@
 			
 		};
 		
-		self._draw = function (pElement, datatable, pOptions){
+		self._drawTemplateMethod = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
@@ -28,10 +32,7 @@
 		};
 		
 		c.charts.ChartBase.call(self, options, element);
-	
 		
 	};
-	
-	c.charts.Column.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);

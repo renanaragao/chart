@@ -63,7 +63,7 @@ var chart = chart || {};
                 
             }
             
-            chart = self._draw(el, dataTableChart, settings.options);
+            chart = self._drawTemplateMethod(el, dataTableChart, settings.options);
             
             window.google.visualization.events.addListener(chart, 'select', select);
             
@@ -204,7 +204,11 @@ var chart = chart || {};
 	
 	c.charts = c.charts || {};
 		
-	c.charts.Column = function(options, element){
+	c.charts.Column = column;
+    
+    c.charts.Column.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function column(options, element){
 			
 		var self = this;
 		
@@ -215,7 +219,7 @@ var chart = chart || {};
 			
 		};
 		
-		self._draw = function (pElement, datatable, pOptions){
+		self._drawTemplateMethod = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
@@ -227,11 +231,8 @@ var chart = chart || {};
 		};
 		
 		c.charts.ChartBase.call(self, options, element);
-	
 		
 	};
-	
-	c.charts.Column.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);
 /// <reference path="../../typings/jquery/jquery.d.ts"/>
@@ -241,7 +242,11 @@ var chart = chart || {};
 	
 	c.charts = c.charts || {};
 		
-	c.charts.Geo = function(options, element){
+	c.charts.Geo = geo;
+    
+    c.charts.Geo.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function geo(options, element){
 			
 		var self = this;
 		
@@ -250,7 +255,7 @@ var chart = chart || {};
 				displayMode: 'provinces'
             };
 		
-		self._draw = function (pElement, datatable, pOptions){
+		self._drawTemplateMethod = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
@@ -263,11 +268,7 @@ var chart = chart || {};
 		
 		c.charts.ChartBase.call(self, options, element);
 		
-		
-		
 	};
-	
-	c.charts.Geo.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);
 /// <reference path="../../typings/jquery/jquery.d.ts"/>
@@ -277,7 +278,11 @@ var chart = chart || {};
 	
 	c.charts = c.charts || {};
 		
-	c.charts.Line = function(options, element){
+	c.charts.Line = line;
+    
+    c.charts.Line.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function line (options, element){
 			
 		var self = this;
 		
@@ -286,7 +291,7 @@ var chart = chart || {};
             backgroundColor: 'transparent'			
 		};
 		
-		self._draw = function (pElement, datatable, pOptions){
+		self._drawTemplateMethod = function (pElement, datatable, pOptions){
 			
 			$.extend(true, settings, pOptions);
 			
@@ -301,8 +306,6 @@ var chart = chart || {};
 	
 		
 	};
-	
-	c.charts.Line.prototype = Object.create(c.charts.ChartBase.prototype);
 	
 })(window.chart);
 (function(c) {

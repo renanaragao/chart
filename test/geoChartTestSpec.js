@@ -42,7 +42,7 @@ describe('Geo Chart - ', function () {
 		
 		var geoChart = new window.chart.charts.Geo({ data:[], options: expectedOptions }, { element: 'div' });
 		
-		var returnChart = geoChart._draw({ element: 'div' }, {source: 'source'}, expectedOptions);
+		var returnChart = geoChart._drawTemplateMethod({ element: 'div' }, {source: 'source'}, expectedOptions);
 		
 		expect(returnChart).toBeDefined();
 		expect(element).toEqual({element: 'div'});
