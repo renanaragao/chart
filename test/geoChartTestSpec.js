@@ -6,8 +6,10 @@ describe('Geo Chart - ', function () {
 	
 	beforeEach(function () {
 		window.google = {		
-			setOnLoadCallback: function (callback) {
-				},
+			charts:{
+				setOnLoadCallback: function (callback) {
+				}
+			},	
 			visualization: {
 				
 				GeoChart: function (el) {

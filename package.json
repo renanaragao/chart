@@ -30,6 +30,8 @@
     "karma-chrome-launcher": "*",
     "karma-cli": "*",
     "karma-jasmine": "~0.1.0",
-    "karma-phantomjs-launcher": "*"
+    "karma-phantomjs-launcher": "*",
+    "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.7"
   }
 }

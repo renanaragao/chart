@@ -4,7 +4,9 @@ var chart = chart || {};
 	c.enumChart = Object.freeze({
 		column: 1,
 		geo: 2,
-		line: 3
+		line: 3,
+        pie: 4,
+		gauge: 5
 	});
 	
 })(window.chart);
@@ -41,7 +43,7 @@ var chart = chart || {};
         function init() {
             		
             validate();
-            window.google.setOnLoadCallback(drawChart);
+            window.google.charts.setOnLoadCallback(drawChart);
             
         }                
         
@@ -216,7 +218,6 @@ var chart = chart || {};
 			legend: { position: 'none' },
             backgroundColor: 'transparent',
 			bar: {groupWidth: "95%"}
-			
 		};
 		
 		self._drawTemplateMethod = function (pElement, datatable, pOptions){
@@ -303,10 +304,77 @@ var chart = chart || {};
 		};
 		
 		c.charts.ChartBase.call(self, options, element);
-	
-		
 	};
 	
+})(window.chart);
+(function (c) {
+    "use strict";
+
+    c.charts = c.charts || {};
+    
+    c.charts.Pie = pie;
+    
+    c.charts.Pie.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function pie (options, element) {
+
+        var self = this;
+
+        var settings = {
+            legend: { position: "none" },
+            backgroundColor: "transparent"
+        };
+
+        self._drawTemplateMethod = function (pElement, datatable, pOptions) {
+
+            $.extend(true, settings, pOptions);
+
+            var chart = new window.google.visualization.PieChart(pElement);
+            chart.draw(datatable, settings);
+
+            return chart;
+
+        };
+
+        c.charts.ChartBase.call(self, options, element);
+
+    };
+
+})(window.chart);
+(function(c){
+    
+    "use strict";
+    
+	c.charts = c.charts || {};
+		
+	c.charts.Gauge = gauge;
+    
+    c.charts.Gauge.prototype = Object.create(c.charts.ChartBase.prototype);
+    
+    function gauge(options, element){
+		
+        var self = this;
+        
+        var settings = {
+			legend: { position: 'none' },
+            backgroundColor: 'transparent'			
+		};
+        
+		self._drawTemplateMethod = function (pElement, datatable, pOptions){
+			
+			$.extend(true, settings, pOptions);
+			
+			var chart = new google.visualization.Gauge(pElement);
+            chart.draw(datatable, settings);
+			
+			return chart;
+			
+		};
+		
+		c.charts.ChartBase.call(self, options, element);        
+    }
+    
+    
 })(window.chart);
 (function(c) {
 	
@@ -318,6 +386,8 @@ var chart = chart || {};
 		Charts[c.enumChart.geo] = c.charts.Geo;
 		Charts[c.enumChart.column] = c.charts.Column;
 		Charts[c.enumChart.line] = c.charts.Line;
+		Charts[c.enumChart.pie] = c.charts.Pie;
+		Charts[c.enumChart.gauge] = c.charts.Gauge;
 	
 		return {
 			createNew: createNew
@@ -333,7 +403,7 @@ var chart = chart || {};
 (function ($) {
 	'use strict';
 	
-    window.google.load('visualization', '1', { packages: ['corechart', 'geochart'] });
+    window.google.charts.load('visualization', '1', { packages: ['corechart', 'geochart', 'gauge'] });
 	
 	$.fn.chart = function (typeChart, settings) {
 		return window.chart.factory.chartFactory().createNew(typeChart, settings, this[0]);

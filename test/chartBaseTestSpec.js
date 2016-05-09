@@ -18,22 +18,24 @@ describe('ChartBase - ', function () {
 	dataTable = [];
 	
 	var google = {
-		setOnLoadCallback: function (callback) {
-			callbackExpected = callback;
-		},
-		visualization: {
-			arrayToDataTable: function (data) {
-				dataTable = data;
-				
-				return data;
+			charts : {
+				setOnLoadCallback: function (callback) {
+					callbackExpected = callback;
+				}
 			},
-			events: {
-						addListener: function (chart, event, select) {
-						}
+			visualization: {
+				arrayToDataTable: function (data) {
+					dataTable = data;
+					
+					return data;
+				},
+				events: {
+							addListener: function (chart, event, select) {
 					}
-		},
-		load: function (p1, p2, p3) {
-				
+				}
+			},
+			load: function (p1, p2, p3) {
+					
 			}
 	};
 	
@@ -54,7 +56,7 @@ describe('ChartBase - ', function () {
 		}).toThrow(new Error('Data source not found.'));
 		
 		window.google = google;
-		
+				
 		new chart.charts.ChartBase({data: []});
 		
 	});
@@ -154,8 +156,10 @@ describe('ChartBase - ', function () {
 		};
 		
 		window.google = {
-				setOnLoadCallback: function (callback) {
-					callbackExpected = callback;
+				charts : {
+					setOnLoadCallback: function (callback) {
+						callbackExpected = callback;
+					}
 				},
 				visualization: {
 				arrayToDataTable: function (data) {
@@ -225,9 +229,11 @@ describe('ChartBase - ', function () {
 			      ];
 		
 		window.google = {
-				setOnLoadCallback: function (callback) {
+				charts : {
+					setOnLoadCallback: function (callback) {
 						callbackExpected = callback;
-					},
+					}
+				},
 				visualization: {
 					arrayToDataTable: function (data) {
 							
@@ -292,8 +298,10 @@ describe('ChartBase - ', function () {
 	it('Must exists drawChart function', function(){
 		
 		window.google = {
-				setOnLoadCallback: function (callback) {
-					callbackExpected = callback;
+				charts : {
+					setOnLoadCallback: function (callback) {
+						callbackExpected = callback;
+					}
 				},
 				visualization: {
 				arrayToDataTable: function (data) {

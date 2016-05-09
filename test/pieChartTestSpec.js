@@ -1,18 +1,17 @@
-/// <reference path="../typings/jasmine/jasmine.d.ts"/>
-
-describe('Line Chart - ', function () {
+describe('Pie Chart - ', function () {
 	
 	var element, chartOptions, chartSource;	
 	
 	beforeEach(function () {
-		window.google = {		
+		
+		window.google = {	
 			charts:{
 				setOnLoadCallback: function (callback) {
 				}
 			},	
 			visualization: {
 				
-				LineChart: function (el) {
+				PieChart: function (el) {
 										
 					element = el;	
 									
@@ -36,18 +35,18 @@ describe('Line Chart - ', function () {
 	it('Must create a Line Chart', function () {	
 		
 		var expectedOptions = {
-			legend: { position: 'none' },
-            backgroundColor: 'transparent',
-			width: 250
-		};
+            legend: { position: "none" },
+            backgroundColor: "transparent"
+        };
 		
-		var lineChart = new chart.charts.Line({ data:[], options: {width: 250} }, { element: 'div' });
+		var pieChart = new chart.charts.Pie({ data:[], options: {width: 250} }, { element: 'div' });
 			
-		var returnChart = lineChart._drawTemplateMethod({ element: 'div' }, {source: 'source'}, {width: 250});
+		var returnChart = pieChart._drawTemplateMethod({
+            legend: { position: "none" },
+            backgroundColor: "transparent"
+        });
 		
 		expect(returnChart).toBeDefined();
-		expect(element).toEqual({element: 'div'});
-		expect(chartSource).toEqual({source: 'source'});
 		expect(chartOptions).toEqual(expectedOptions); 
 		expect(chart.charts.Line.prototype instanceof chart.charts.ChartBase).toEqual(true);
 		

@@ -31,7 +31,7 @@
         function init() {
             		
             validate();
-            window.google.setOnLoadCallback(drawChart);
+            window.google.charts.setOnLoadCallback(drawChart);
             
         }                
         

@@ -30,8 +30,6 @@
 		};
 		
 		c.charts.ChartBase.call(self, options, element);
-	
-		
 	};
 	
 })(window.chart);

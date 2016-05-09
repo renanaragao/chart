@@ -9,10 +9,13 @@
 	<div id="columnChart"></div>
     <div id="geoChart"></div>
     <div id="lineChart"></div>
+    <div id="pieChart"></div>
+    <div id="gaugeChart"></div>
        
     <script src="..\node_modules\jquery\dist\jquery.js" type="text/javascript"></script>
-    <script src="..\lib\google.grafico.js" type="text/javascript"></script>
-    <script src="..\bin\chart.min.js" type="text/javascript"></script>
+    <!--<script src="..\lib\google.grafico.js" type="text/javascript"></script>-->
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+    <script src="..\bin\chart.js" type="text/javascript"></script>
         
 	<script>
 		$(document).ready(function () {
@@ -60,7 +63,26 @@
             { Grupo: 'bh', Descricao: 'c', Valor: 20 },
             { Grupo: 'bh', Descricao: 'b', Valor: 20 }
             ], options:{width: 500, height: 500}});
-        });			
+
+            $('#pieChart').chart(chart.enumChart.pie, {data:[
+            { Grupo: 'sp', Descricao: 'a', Valor: 10 },
+            { Grupo: 'sp', Descricao: 'b', Valor: 5 },
+            { Grupo: 'sp', Descricao: 'c', Valor: 2 },
+            { Grupo: 'rj', Descricao: 'b', Valor: 4 },
+            { Grupo: 'rj', Descricao: 'c', Valor: 6 },
+            { Grupo: 'sc', Descricao: 'a', Valor: 8 },
+            { Grupo: 'sc', Descricao: 'c', Valor: 10 },
+            { Grupo: 'bh', Descricao: 'c', Valor: 20 },
+            { Grupo: 'bh', Descricao: 'b', Valor: 20 }
+            ], options:{width: 500, height: 500}});
+        
+        
+       $('#gaugeChart').chart(chart.enumChart.gauge, {data:[
+            {Descricao: 'Deveria', Valor: 10 },
+            {Descricao: 'Está', Valor: 5 },
+            ], options:{width: 500, height: 500}});
+        });	
+        
 	</script> 
     
 </body>

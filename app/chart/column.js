@@ -17,7 +17,6 @@
 			legend: { position: 'none' },
             backgroundColor: 'transparent',
 			bar: {groupWidth: "95%"}
-			
 		};
 		
 		self._drawTemplateMethod = function (pElement, datatable, pOptions){

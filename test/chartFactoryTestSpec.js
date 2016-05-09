@@ -8,23 +8,25 @@ describe('ChartFactory - ', function () {
 	beforeEach(function () {
 		
 		window.google = {
+			charts:{
 				setOnLoadCallback: function (callback) {
-				},
-				visualization: {
-				arrayToDataTable: function (data) {
-					
-					return {
-						getNumberOfColumns: function () {
-						}
-					};
-				},
-				events: {
-						addListener: function (chart, event, select) {
-						}
+				}
+			},	
+			visualization: {
+			arrayToDataTable: function (data) {
+				
+				return {
+					getNumberOfColumns: function () {
 					}
+				};
 			},
-			load: function (p1, p2, p3) { }
-		};
+			events: {
+					addListener: function (chart, event, select) {
+					}
+				}
+		},
+		load: function (p1, p2, p3) { }
+	};
 		
 	});
 	
@@ -59,6 +61,21 @@ describe('ChartFactory - ', function () {
 		
 	});
 	
+	it('chartFactory must create a new chart based on passed parameter (parameter chart.enumChat.pie)', function () {
+		
+		var chartCreated = chart.factory.chartFactory().createNew(chart.enumChart.pie, {data: []}, {});
+		
+		expect(chartCreated).toBeDefined();
+		
+	});
+	
+	it('chartFactory must create a new chart based on passed parameter (parameter chart.enumChat.gauge)', function () {
+		
+		var chartCreated = chart.factory.chartFactory().createNew(chart.enumChart.gauge, {data: []}, {});
+		
+		expect(chartCreated).toBeDefined();
+		
+	});	
 	
 
 	
