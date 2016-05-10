@@ -33,7 +33,7 @@ describe('Geo Chart - ', function () {
 	});
 	
 	
-	it('Must create a Geo Chart', function () {	
+	it('Should create a Geo Chart', function () {	
 		
 		var expectedOptions = {
                 height: 500,

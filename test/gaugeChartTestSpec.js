@@ -33,7 +33,7 @@ describe('Gauge Chart - ', function () {
 	});
 	
 	
-	it('Must create a Gauge Chart', function () {	
+	it('Should create a Gauge Chart', function () {	
 		
 		var expectedOptions = {
 			legend: { position: 'none' },

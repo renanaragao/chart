@@ -32,7 +32,7 @@ describe('Pie Chart - ', function () {
 	});
 	
 	
-	it('Must create a Line Chart', function () {	
+	it('Should create a Line Chart', function () {	
 		
 		var expectedOptions = {
             legend: { position: "none" },
