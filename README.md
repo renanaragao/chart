@@ -14,6 +14,7 @@ Gráficos suportados:
  - Column;
  - Line;
  - Pie;
- - Gauge
+ - Gauge;
+ - Area
  
 
