@@ -4,7 +4,7 @@
 
 describe('moneyFormat - ', function () {
 
-	it('Must format the money values - BRL', function () {
+	it('Should format the money values - BRL', function () {
 		
 		var value = '1000.00';
 		
@@ -14,7 +14,7 @@ describe('moneyFormat - ', function () {
 		
 	});
 	
-	it('Must format the money values - USD', function () {
+	it('Should format the money values - USD', function () {
 		
 		var value = '1000.00';
 		
@@ -24,7 +24,7 @@ describe('moneyFormat - ', function () {
 		
 	});
 	
-	it('Must format the money values - EUR', function () {
+	it('Should format the money values - EUR', function () {
 		
 		var value = '1000.00';
 		
@@ -34,7 +34,7 @@ describe('moneyFormat - ', function () {
 		
 	});
 	
-	it('Must format the money values - HKD', function () {
+	it('Should format the money values - HKD', function () {
 		
 		var value = '1000.00';
 		
@@ -44,7 +44,7 @@ describe('moneyFormat - ', function () {
 		
 	});
 	
-	it('Must format the money values - Without parameter', function () {
+	it('Should format the money values - Without parameter', function () {
 		
 		var value = '1000.00';
 		

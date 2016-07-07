@@ -9,10 +9,15 @@
 	<div id="columnChart"></div>
     <div id="geoChart"></div>
     <div id="lineChart"></div>
+    <div id="pieChart"></div>
+    <div id="gaugeChart"></div>
+    <div id="areaChart"></div>
+    
        
     <script src="..\node_modules\jquery\dist\jquery.js" type="text/javascript"></script>
-    <script src="..\lib\google.grafico.js" type="text/javascript"></script>
-    <script src="..\bin\chart.min.js" type="text/javascript"></script>
+    <!--<script src="..\lib\google.grafico.js" type="text/javascript"></script>-->
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+    <script src="..\bin\chart.js" type="text/javascript"></script>
         
 	<script>
 		$(document).ready(function () {
@@ -60,7 +65,51 @@
             { Grupo: 'bh', Descricao: 'c', Valor: 20 },
             { Grupo: 'bh', Descricao: 'b', Valor: 20 }
             ], options:{width: 500, height: 500}});
-        });			
+
+            $('#pieChart').chart(chart.enumChart.pie, {data:[
+            { Grupo: 'sp', Descricao: 'a', Valor: 10 },
+            { Grupo: 'sp', Descricao: 'b', Valor: 5 },
+            { Grupo: 'sp', Descricao: 'c', Valor: 2 },
+            { Grupo: 'rj', Descricao: 'b', Valor: 4 },
+            { Grupo: 'rj', Descricao: 'c', Valor: 6 },
+            { Grupo: 'sc', Descricao: 'a', Valor: 8 },
+            { Grupo: 'sc', Descricao: 'c', Valor: 10 },
+            { Grupo: 'bh', Descricao: 'c', Valor: 20 },
+            { Grupo: 'bh', Descricao: 'b', Valor: 20 }
+            ], options:{width: 500, height: 500}});
+        
+        
+       $('#gaugeChart').chart(chart.enumChart.gauge, {data:[
+            {Descricao: 'Ontem', Valor: 5000 },
+            {Descricao: 'Hoje', Valor: 500 },
+            ], options:{
+                width: 700
+                , height: 700
+                , max:7000
+                , min: 0
+                , redFrom:0
+                , redTo:2999
+                , yellowFrom: 3000
+                , yellowTo: 4999
+                , greenFrom: 5000
+                , greenTo: 7000
+                , majorTicks: ["0", "15000", "20000", "50000"]
+            }});
+        });	
+        
+       $('#areaChart').chart(chart.enumChart.area, {data:[
+            { Grupo: 'sp', Descricao: 'a', Valor: 10 },
+            { Grupo: 'sp', Descricao: 'b', Valor: 5 },
+            { Grupo: 'sp', Descricao: 'c', Valor: 2 },
+            { Grupo: 'rj', Descricao: 'b', Valor: 4 },
+            { Grupo: 'rj', Descricao: 'c', Valor: 6 },
+            { Grupo: 'sc', Descricao: 'a', Valor: 8 },
+            { Grupo: 'sc', Descricao: 'c', Valor: 10 },
+            { Grupo: 'bh', Descricao: 'c', Valor: 20 },
+            { Grupo: 'bh', Descricao: 'b', Valor: 20 }
+            ],options:{width: 500, height: 500}
+        });
+        
 	</script> 
     
 </body>

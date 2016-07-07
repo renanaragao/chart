@@ -14,6 +14,9 @@ module.exports = function(grunt) {
           'app/chart/column.js',
           'app/chart/geo.js',
           'app/chart/line.js',
+          'app/chart/pie.js',
+          'app/chart/gauge.js',
+          'app/chart/area.js',
           'app/factory/chartFactory.js',
           'app/plugin.js',
           'app/moneyFormat.js'

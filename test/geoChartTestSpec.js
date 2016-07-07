@@ -6,8 +6,10 @@ describe('Geo Chart - ', function () {
 	
 	beforeEach(function () {
 		window.google = {		
-			setOnLoadCallback: function (callback) {
-				},
+			charts:{
+				setOnLoadCallback: function (callback) {
+				}
+			},	
 			visualization: {
 				
 				GeoChart: function (el) {
@@ -31,7 +33,7 @@ describe('Geo Chart - ', function () {
 	});
 	
 	
-	it('Must create a Geo Chart', function () {	
+	it('Should create a Geo Chart', function () {	
 		
 		var expectedOptions = {
                 height: 500,

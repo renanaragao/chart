@@ -28,9 +28,9 @@ describe('EnumChart - ', function () {
 		
 		try {
 			
-			window.chart.enumChart.pie = 10;
+			window.chart.enumChart.bla = 10;
 			
-			expect(window.chart.enumChart.pie).toBeUndefined();
+			expect(window.chart.enumChart.bla).toBeUndefined();
 			
 		} catch (error) {
 			expect(true).toEqual(true);

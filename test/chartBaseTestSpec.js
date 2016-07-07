@@ -18,22 +18,24 @@ describe('ChartBase - ', function () {
 	dataTable = [];
 	
 	var google = {
-		setOnLoadCallback: function (callback) {
-			callbackExpected = callback;
-		},
-		visualization: {
-			arrayToDataTable: function (data) {
-				dataTable = data;
-				
-				return data;
+			charts : {
+				setOnLoadCallback: function (callback) {
+					callbackExpected = callback;
+				}
 			},
-			events: {
-						addListener: function (chart, event, select) {
-						}
+			visualization: {
+				arrayToDataTable: function (data) {
+					dataTable = data;
+					
+					return data;
+				},
+				events: {
+							addListener: function (chart, event, select) {
 					}
-		},
-		load: function (p1, p2, p3) {
-				
+				}
+			},
+			load: function (p1, p2, p3) {
+					
 			}
 	};
 	
@@ -45,7 +47,7 @@ describe('ChartBase - ', function () {
 		}		
 	});
 	
-	it("Must validate ChartBase's data source ", function () { 
+	it("Should validate ChartBase's data source ", function () { 
 		
 		expect(function(){
 			
@@ -54,12 +56,12 @@ describe('ChartBase - ', function () {
 		}).toThrow(new Error('Data source not found.'));
 		
 		window.google = google;
-		
+				
 		new chart.charts.ChartBase({data: []});
 		
 	});
 	
-	it("Must run google's method setOnLoadCallback", function () {
+	it("Should run google's method setOnLoadCallback", function () {
 		
 		window.google = google;
 		
@@ -69,7 +71,7 @@ describe('ChartBase - ', function () {
 		
 	});
 	
-	it("Must run google's method visualization.arrayToDataTable", function () {
+	it("Should run google's method visualization.arrayToDataTable", function () {
 		
 		window.google = google;
 		
@@ -103,7 +105,7 @@ describe('ChartBase - ', function () {
 		
 	});
 	
-	it('Must draw chart', function () {
+	it('Should draw chart', function () {
 		
 		window.google = google;
 		
@@ -147,15 +149,17 @@ describe('ChartBase - ', function () {
 		
 	});
 	
-	it("If options's property 'responsive' to equal true and if the multiplication between column numbers and 65 to be bigger than chart's width, must calculate width based in number of columns", function () {
+	it("If options's property 'responsive' to equal true and if the multiplication between column numbers and 65 to be bigger than chart's width, Should calculate width based in number of columns", function () {
 		
 		var optionsExpected = {
 			width: 23
 		};
 		
 		window.google = {
-				setOnLoadCallback: function (callback) {
-					callbackExpected = callback;
+				charts : {
+					setOnLoadCallback: function (callback) {
+						callbackExpected = callback;
+					}
 				},
 				visualization: {
 				arrayToDataTable: function (data) {
@@ -204,7 +208,7 @@ describe('ChartBase - ', function () {
 		
 	});
 	
-	it('Must capture the click event', function () {
+	it('Should capture the click event', function () {
 		
 		var eventExpected = {};
 		
@@ -225,9 +229,11 @@ describe('ChartBase - ', function () {
 			      ];
 		
 		window.google = {
-				setOnLoadCallback: function (callback) {
+				charts : {
+					setOnLoadCallback: function (callback) {
 						callbackExpected = callback;
-					},
+					}
+				},
 				visualization: {
 					arrayToDataTable: function (data) {
 							
@@ -289,11 +295,13 @@ describe('ChartBase - ', function () {
 	});
 	
 	
-	it('Must exists drawChart function', function(){
+	it('Should exists drawChart function', function(){
 		
 		window.google = {
-				setOnLoadCallback: function (callback) {
-					callbackExpected = callback;
+				charts : {
+					setOnLoadCallback: function (callback) {
+						callbackExpected = callback;
+					}
 				},
 				visualization: {
 				arrayToDataTable: function (data) {
